@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <h2>Crear usuario</h2>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        <label for="name">Nombre:</label>
+        <input type="text" name="name" id="name"><br>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email"><br>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password"><br>
+        <br>
+        <input type="submit" value="Editar">
+    </form>
+    
+{% endblock %}

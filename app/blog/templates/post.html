@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <section class="post-individual">
+        <div class="post-individual-container">
+            <div class="card-image-container">
+                <img class="card-image-individual" src="{{ post.route }}" alt="Imagen Post">
+            </div>
+            <div class="post-title-2">
+                <div>
+                    <p class="p1">{{ post.title }}</p>
+                </div>
+                <p class="p2">{{ post.content|safe }}</p>
+            </div>
+            {% if current_user.is_authenticated %}
+            <div class="posts-container-links">
+                <a class="post-links-new" href="/edit/{{ post.id }}">Editar</a>
+                <a class="post-links-new" onclick="return confirm('¿En verdad deseas eliminar este Post?')" href="/delete/{{ post.id }}">Eliminar</a>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+{% endblock %}

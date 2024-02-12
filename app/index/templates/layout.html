@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/cef0e935a9.js" crossorigin="anonymous"></script>
+    <title>Snake CODE</title>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-logo">
+            <a href="{{url_for('index.index')}}">
+                <img class="nav-image" src="https://res.cloudinary.com/duckwaaai/image/upload/f_auto,q_auto/v1/BlogProject/Logos/jy44cakusetxgoxkaxwl" alt="logotipo">
+            </a>
+        </div>
+        <div class="nav-menu">
+            {% if current_user.is_authenticated %}
+            <ul>
+                {% for user in users %}
+                <li>Bienvenido: <strong>{{ user.name }}</strong></li>
+                {% endfor %}
+                <li><a href=""><strong>{{ current_user.name }}</strong></a></li>
+                <li><a href="{{url_for('index.index')}}">Inicio</a></li>
+                <li><a href="{{url_for('admin.logout')}}">Cerrar Sesión</a></li>
+            </ul>
+            {% else %}
+            <ul>
+                <li><a href="{{url_for('index.index')}}">Inicio</a></li>
+                <li><a href="{{url_for('admin.login')}}">Iniciar Sesión</a></li>
+            </ul>
+            {% endif %}
+        </div>
+    </nav>
+    <section>{% block content %}{% endblock %}</section>
+    <footer class="footer-container">
+        <div class="footer">
+            <div class="center full-width">
+                <div class="row">
+                    <h3>CONTÁCTAME</h3>
+                </div>
+            </div>
+            <div class="center full-width">
+                <div class="row">
+                    <p>No olvides seguirme en mis Redes Sociales</p>
+                </div>
+            </div>
+            <div class="center full-sidth social-links">
+                <div class="row">
+                    <a target="_blank" href="https://www.facebook.com/Jorge-Garcia-Dev-105078822218513">
+                        <img class="social" src="https://res.cloudinary.com/duckwaaai/image/upload/f_auto,q_auto/v1/BlogProject/Logos/lwutjqbv5h8rki6behqg" alt="Logo Facebook">
+                    </a>
+                </div>
+                <div class="row">
+                    <a target="_blank" href="https://twitter.com/JorgeGarcia_Dev">
+                        <img class="social" src="https://res.cloudinary.com/duckwaaai/image/upload/f_auto,q_auto/v1/BlogProject/Logos/sylaio0mfwimxpbivt3m" alt="Logo Twitter">
+                    </a>
+                </div>
+                <div class="row">
+                    <a target="_blank" href="https://www.linkedin.com/in/jorgegarcia-dev">
+                        <img class="social" src="https://res.cloudinary.com/duckwaaai/image/upload/f_auto,q_auto/v1/BlogProject/Logos/l3yozwujrv0azg5khavd" alt="Logo Linkedin">
+                    </a>
+                </div>
+                <div class="row">
+                    <a target="_blank" href="https://github.com/JorgeGarcia-Dev">
+                        <img class="social" src="https://res.cloudinary.com/duckwaaai/image/upload/f_auto,q_auto/v1/BlogProject/Logos/f3wwy3tpi2rzpen8xpbk" alt="Logo GitHub">
+                    </a>
+                </div>
+            </div>
+            <div class="made-width">
+                <div class="row">
+                    <p class="love">Development By_ <span>Jorge Garcia Dev</span></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

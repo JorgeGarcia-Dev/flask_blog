@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <section class="form-register">
+        <div class="form-register-container">
+            <div class="form-register-title">
+                <h2>Editar Post:</h2>
+            </div>
+            <div class="form-register-text">
+                <form class="register-form" action="" method="POST" enctype="multipart/form-data" novalidate>
+                    {{ form.hidden_tag() }}
+                    <div>
+                        {{ form.title.label }}<br>
+                        <br>
+                        {{ form.title(size=64, placeholder="Title", value=post.title) }}<br>
+                        {% for error in form.title.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        {{ form.tag.label }}<br>
+                        <br>
+                        {{ form.tag(size=64, placeholder="Tag", value=tag.name_tag) }}<br>
+                        {% for error in form.tag.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        {{ form.content.label }}<br>
+                        <br>
+                        {{ form.content(size=64, placeholder="Content...", rows=10, cols=53, value=post.content) }}<br>
+                        {% for error in form.content.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="register-form">
+                        {{ form.submit(id="submit-button") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

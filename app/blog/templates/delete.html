@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<section>
+    <div class="form-register-container">
+        <div class="form-register-title">
+            <h2>Eliminar Post:</h2>
+        </div>
+        <div class="form-register-text">
+            <form class="form-register-row" action="" method="POST">
+                <label for="title">Título:</label><br>
+                <br>
+                <input value="{{ post.title }}" type="text" name="title" id="title"><br>
+                <br>
+                <label for="content">Comentario:</label><br>
+                <br>
+                <textarea class="area" name="content" id="content" cols="55" rows="10" maxlength="250" >{{ post.content }}</textarea>
+                <br>
+                <br>
+                <input class="form-register-button" type="submit" value="Editar">
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

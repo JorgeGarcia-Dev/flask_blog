@@ -1,0 +1,10 @@
+env/
+
+static/uploads/
+app/blog/static/uploads/
+
+__pycache__/
+
+.env
+
+Prompts.txt

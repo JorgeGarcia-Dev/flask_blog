@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <section class="etiqueta-container">
+        <div>
+            <h1>Posts with tag "{{ tag.name_tag }}"</h1>
+        </div>
+        {% for post in posts %}
+        <div class="card-container">
+            <ul class="card-full">
+                <div class="card-image-container">
+                    <img class="card-image" src="{{post.route}}" alt="Imagen Post">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <li class="post-title">{{ post.title }}</li>
+                    </div>
+                    <br>
+                    <div class="post-content">
+                        <li class="card-li">{{ post.content }}</li>
+                    </div>
+                    <br>
+                    <div class="post-bot">
+                        <a class="card-link" href="post/{{post.id}}"> Ver más... </a>
+                    </div>
+                </div>
+            </ul>
+        </div>
+        {% endfor %}
+    </section>
+
+{% endblock %}

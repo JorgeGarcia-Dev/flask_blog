@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <section class="error">
+        <div class="error-container">
+            <div>
+                <h2 class="error">Error 404, Página no encontrada</h2>
+            </div>
+            <div>
+                <a class="post-link-new" href="{{url_for('index.index')}}">Volver al inicio</a>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

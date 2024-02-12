@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <section class="form-register">
+        <div class="form-register-container">
+            <div class="form-register-title">
+                <h2>Crear etiqueta:</h2>
+            </div>
+            <div class="form-register-text">
+                <form class="form-register-row" action="" method="POST">
+                    {{ form.csrf_token }}
+                    <label for="name_tag">Nombre:</label><br>
+                    <br>
+                    <input type="text" name="name_tag" id="name_tag"><br>
+                    <br>
+                    <br>
+                    <input class="form-register-button" type="submit" value="Crear">
+                </form>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
