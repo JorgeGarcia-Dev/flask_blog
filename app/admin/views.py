@@ -1,3 +1,4 @@
+"""Views for the admin."""
 from flask import flash
 from flask import url_for
 from flask import request
@@ -15,8 +16,6 @@ from flask_login import logout_user
 
 from flask_bcrypt import Bcrypt
 
-# from peewee import IntegrityError
-
 from flask_wtf.csrf import generate_csrf
 
 admin_bp = Blueprint(
@@ -26,40 +25,23 @@ admin_bp = Blueprint(
 bcrypt = Bcrypt()
 
 
-# @admin_bp.route("/users/register", methods=["GET", "POST"])
-# def register():
-#     form = SignupForm()
-#     if form.validate_on_submit():
-#         name = form.name.data
-#         email = form.email.data
-#         password = form.password.data
-
-#         csrf_token: str = generate_csrf()
-
-#         try:
-#             new_user = User.create(
-#                 name=name,
-#                 email=email,
-#                 password=bcrypt.generate_password_hash(password).decode("utf-8"),
-#             )
-#             new_user.save()
-#             login_user(new_user)
-
-#         except IntegrityError:
-#             return "Username or Email already exists", 409
-
-#         return redirect(url_for("index.index"))
-
-#     return render_template("register.html", form=form, csrf_token=csrf_token)
-
-
 @admin_bp.route("/users/login", methods=["GET", "POST"])
 def login():
+    """Login form. Validates that username matches, and password is correct.
+
+    Atributes:
+    - email (StringField): The email of the user.
+    - password (PasswordField): The password of the user.
+    - submit (SubmitField): The button to submit the form and login the user.
+
+    Returns:
+    - A redirect to the index page.
+    """
     form = LoginForm()
     if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
-        
+
         csrf_token: str = generate_csrf()
 
         try:
@@ -71,8 +53,9 @@ def login():
 
         except User.DoesNotExist:
             flash("Email o Password incorrectos.")
-            return render_template("login.html", form=form, csrf_token=csrf_token)
-        
+            return render_template("login.html",
+                                   form=form,
+                                   csrf_token=csrf_token)
 
     else:
         return render_template("login.html", form=form)
@@ -80,6 +63,14 @@ def login():
 
 @admin_bp.route("/logout")
 def logout():
+    """Logout Form
+
+    Atributes:
+    - id (int): The id of the user to update.
+
+    Returns:
+    - A redirect to the index page.
+    """
     logout_user()
 
     return redirect(url_for("index.index"))
@@ -87,6 +78,14 @@ def logout():
 
 @admin_bp.route("/users/update/<int:id>", methods=["GET", "POST"])
 def update_user(id):
+    """Update user
+
+    Atributes:
+    - id (int): The id of the user to update.
+
+    Returns:
+    - A redirect to the index page.
+    """
     if request.method == "POST":
         user = User.update(
             name=request.form["name"],

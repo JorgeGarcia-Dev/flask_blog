@@ -1,3 +1,4 @@
+"""Views for the index."""
 from flask import Blueprint
 from flask import render_template
 
@@ -11,6 +12,15 @@ index_bp = Blueprint(
 
 @index_bp.route("/")
 def index() -> str:
+    """Index page
+
+    Atributes:
+    - posts (list): The list of posts.
+    - tags (list): The list of tags.
+
+    Returns:
+    - The index template.
+    """
     posts: list = Post.select(Post.id, Post.route, Post.title, Post.content)
     tags: list = Tag.select(Tag.name_tag.distinct())
 
