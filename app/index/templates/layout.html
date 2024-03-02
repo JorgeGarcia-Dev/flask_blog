@@ -25,7 +25,7 @@
                 {% for user in users %}
                 <li>Bienvenido: <strong>{{ user.name }}</strong></li>
                 {% endfor %}
-                <li><a href=""><strong>{{ current_user.name }}</strong></a></li>
+                <li><a href="">Hola, <strong>{{ current_user.name }}</strong></a></li>
                 <li><a href="{{url_for('index.index')}}">Inicio</a></li>
                 <li><a href="{{url_for('admin.logout')}}">Cerrar Sesión</a></li>
             </ul>
