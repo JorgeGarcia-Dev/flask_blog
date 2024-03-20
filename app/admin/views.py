@@ -135,3 +135,20 @@ def update_user(id):
         return redirect(url_for("index.index"))
 
     return render_template("edit.html")
+
+
+@admin_bp.route("/users/update/<int:id>", methods=["GET", "POST"])
+def delete_user(id):
+    """Delete user
+
+    Atributes:
+    - id (int): The id of the user to delete.
+
+    Returns:
+    - A redirect to the index page.
+    """
+    user = User.delete().where(User.id == id)
+
+    user.execute()
+
+    return redirect(url_for("index.index"))
